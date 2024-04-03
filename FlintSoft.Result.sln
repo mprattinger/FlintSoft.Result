@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlintSoft.Result", "FlintSoft.Result\FlintSoft.Result.csproj", "{F03A8FA3-FDD9-435E-9EA3-0192315A4ECE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlintSoft.Result.Tests", "FlintSoft.Result.Tests\FlintSoft.Result.Tests.csproj", "{4EABEE46-A0C7-4DC6-8E29-6A8B87646DF8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F03A8FA3-FDD9-435E-9EA3-0192315A4ECE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F03A8FA3-FDD9-435E-9EA3-0192315A4ECE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F03A8FA3-FDD9-435E-9EA3-0192315A4ECE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F03A8FA3-FDD9-435E-9EA3-0192315A4ECE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EABEE46-A0C7-4DC6-8E29-6A8B87646DF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EABEE46-A0C7-4DC6-8E29-6A8B87646DF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EABEE46-A0C7-4DC6-8E29-6A8B87646DF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EABEE46-A0C7-4DC6-8E29-6A8B87646DF8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
