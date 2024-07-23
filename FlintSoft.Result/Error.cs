@@ -23,3 +23,13 @@ public class Error : IError
         
     }
 }
+
+public static class ErrorExtensions {
+    public static Error FromIError(this IError fromError) {
+        if (fromError is Error) {
+            return new (fromError.Code == "" ? string.Empty : fromError.Code, fromError.Description);
+        } else {
+            throw new ArgumentException("fromError is not a valid Error Type!");
+        }
+    }
+}
