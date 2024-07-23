@@ -79,30 +79,30 @@ public class Result<T>
         return failure(Error!);
     }
 
-    // public void Switch(Action<T> success, Action<IError> failure)
-    // {
-    //     if (IsSuccess)
-    //     {
-    //         success(Value!);
-    //         return;
-    //     }
-    //     failure(Error!);
-    // }
+    public void Switch(Action<T> success, Action<IError> failure)
+    {
+        if (IsSuccess)
+        {
+            success(Value!);
+            return;
+        }
+        failure(Error!);
+    }
 
-    // public void Switch(Action<T> success, Action<IError> notFound, Action<IError> failure)
-    // {
-    //     if (IsSuccess)
-    //     {
-    //         success(Value!);
-    //         return;
-    //     }
+    public void Switch(Action<T> success, Action<IError> notFound, Action<IError> failure)
+    {
+        if (IsSuccess)
+        {
+            success(Value!);
+            return;
+        }
 
-    //     if (IsNotFound)
-    //     {
-    //         notFound(Error!);
-    //         return;
-    //     }
+        if (IsNotFound)
+        {
+            notFound(Error!);
+            return;
+        }
 
-    //     failure(Error!);
-    // }
+        failure(Error!);
+    }
 }
