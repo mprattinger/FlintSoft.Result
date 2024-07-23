@@ -30,8 +30,24 @@ jobs:
             
         - name: Setup .NET
           uses: actions/setup-dotnet@v4
-
-        - run: dotnet pack --configuration Release --output ${{env.NuGetDirectory}}
+        
+        - name: GitVersion Setup
+          uses: gittools/actions/gitversion/setup@v1.1.1
+          with:
+            versionSpec: '5.x'
+        
+        - name: Determine Version
+          uses: gittools/actions/gitversion/execute@v1.1.1
+          id: version
+          with:
+            useConfigFile: true
+            configFilePath: GitVersion.yml
+        
+        - name: Use the version
+          run: |
+            echo ${{ env.semVer }}
+        
+        - run: dotnet pack --configuration Release --output ${{env.NuGetDirectory}} -p:PackageVersion=${{ env.semVer }}
 
         - uses: actions/upload-artifact@v4
           with:
