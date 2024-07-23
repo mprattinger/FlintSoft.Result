@@ -52,4 +52,57 @@ public class ResultTests
         res.Error.Should().NotBeNull();
         res.Error!.Description.Should().Be("Test");
     }
+
+    [Fact]
+    public void TestSwitch_SUCESS() {
+
+        var res = testFunction(true, "GOOD");
+
+        var val = res.Match(
+            success: (v) => v,
+            notFound: (error) => error.Description,
+            failure: (error) => error.Description
+        );
+
+        val.Should().Be("GOOD");
+    }
+
+    [Fact]
+    public void TestSwitch_NOTFOUND() {
+
+        var res = testFunction(true, "");
+
+        var val = res.Match(
+            success: (v) => v,
+            notFound: (error) => error.Description,
+            failure: (error) => error.Description
+        );
+
+        val.Should().Be("The string is empty");
+    }
+
+    [Fact]
+    public void TestSwitch_Error() {
+
+        var res = testFunction(false, "GOOD");
+
+        var val = res.Match(
+            success: (v) => v,
+            notFound: (error) => error.Description,
+            failure: (error) => error.Description
+        );
+
+        val.Should().Be("This function resulted in an error!");
+    }
+
+    private Result<string> testFunction(bool isSuccess, string testString) {
+        if(string.IsNullOrEmpty(testString)) {
+            return new NotFound("TESTSTRING", "The string is empty");
+        }
+        
+        if(isSuccess)
+            return testString;
+
+        return new Error("ERRORMODE", "This function resulted in an error!");
+    }
 }
