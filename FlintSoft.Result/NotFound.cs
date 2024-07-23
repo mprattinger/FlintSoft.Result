@@ -23,7 +23,7 @@ public class NotFound : IError
 }
 
 public static class NotFoundExtensions {
-    public static NotFound FromIError(this IError fromNotFound) {
+    public static NotFound ToNotFound(this IError fromNotFound) {
         if (fromNotFound is NotFound) {
             return new (fromNotFound.Code == "" ? string.Empty : fromNotFound.Code, fromNotFound.Description);
         } else {

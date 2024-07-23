@@ -25,7 +25,7 @@ public class Error : IError
 }
 
 public static class ErrorExtensions {
-    public static Error FromIError(this IError fromError) {
+    public static Error ToError(this IError fromError) {
         if (fromError is Error) {
             return new (fromError.Code == "" ? string.Empty : fromError.Code, fromError.Description);
         } else {
