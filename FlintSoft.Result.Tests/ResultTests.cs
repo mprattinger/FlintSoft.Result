@@ -54,7 +54,8 @@ public class ResultTests
     }
 
     [Fact]
-    public void TestSwitch_SUCESS() {
+    public void TestSwitch_SUCESS()
+    {
 
         var res = testFunction(true, "GOOD");
 
@@ -68,7 +69,8 @@ public class ResultTests
     }
 
     [Fact]
-    public void TestSwitch_NOTFOUND() {
+    public void TestSwitch_NOTFOUND()
+    {
 
         var res = testFunction(true, "");
 
@@ -82,7 +84,8 @@ public class ResultTests
     }
 
     [Fact]
-    public void TestSwitch_Error() {
+    public void TestSwitch_Error()
+    {
 
         var res = testFunction(false, "GOOD");
 
@@ -95,14 +98,51 @@ public class ResultTests
         val.Should().Be("This function resulted in an error!");
     }
 
-    private Result<string> testFunction(bool isSuccess, string testString) {
-        if(string.IsNullOrEmpty(testString)) {
+    [Fact]
+    public void Result_Should_ReturnOK()
+    {
+        var res = customError(false);
+
+        res.IsFailure.Should().BeFalse();
+        res.IsSuccess.Should().BeTrue();
+        res.Value!.Should().Be("OK");
+    }
+
+    [Fact]
+    public void Result_Should_ReturnCustomError()
+    {
+        var res = customError(true);
+
+        res.IsFailure.Should().BeTrue();
+        res.IsSuccess.Should().BeFalse();
+        res.Error.Should().BeOfType<CustomError>();
+    }
+
+    private Result<string> testFunction(bool isSuccess, string testString)
+    {
+        if (string.IsNullOrEmpty(testString))
+        {
             return new NotFound("TESTSTRING", "The string is empty");
         }
-        
-        if(isSuccess)
+
+        if (isSuccess)
             return testString;
 
         return new Error("ERRORMODE", "This function resulted in an error!");
     }
+
+    private Result<string> customError(bool isFaulure)
+    {
+        if (isFaulure)
+        {
+            return new CustomError("Fehler");
+        }
+
+        return "OK";
+    }
+}
+
+public class CustomError : Error
+{
+    public CustomError(string msg) : base(nameof(CustomError), msg) { }
 }

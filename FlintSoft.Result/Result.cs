@@ -7,9 +7,9 @@ public class Result<T>
 
     public bool IsSuccess { get; }
 
-    public bool IsNotFound => Error is not null && Error.GetType() != typeof(Error);
+    public bool IsNotFound => Error is not null && Error is not Result.Error;
 
-    public bool IsFailure => Error is not null && Error.GetType() == typeof(Error);
+    public bool IsFailure => Error is not null && Error is Error;
 
     private Result(T value)
     {
