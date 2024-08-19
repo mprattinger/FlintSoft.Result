@@ -110,9 +110,15 @@ public class Result<T> : IResult
     {
         return typeof(T);
     }
+
+    public object GetValue()
+    {
+        return Value!;
+    }
 }
 
 public interface IResult
 {
     Type GetValueType();
+    object GetValue();
 }
