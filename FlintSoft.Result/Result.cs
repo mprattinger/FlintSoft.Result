@@ -1,6 +1,6 @@
 ﻿namespace FlintSoft.Result;
 
-public class Result<T>
+public class Result<T> : IResult
 {
     public readonly T? Value;
     public readonly IError? Error;
@@ -105,4 +105,14 @@ public class Result<T>
 
         failure(Error!);
     }
+
+    public Type GetValueType()
+    {
+        return typeof(T);
+    }
+}
+
+public interface IResult
+{
+    Type GetValueType();
 }

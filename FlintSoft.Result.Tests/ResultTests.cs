@@ -118,6 +118,14 @@ public class ResultTests
         res.Error.Should().BeOfType<CustomError>();
     }
 
+    [Fact]
+    public void GetValueType_Should_ReturnString()
+    {
+        var res = testFunction(true, "GOOD");
+
+        res.GetValueType().Should().Be(typeof(string));
+    }
+
     private Result<string> testFunction(bool isSuccess, string testString)
     {
         if (string.IsNullOrEmpty(testString))
