@@ -111,14 +111,35 @@ public class Result<T> : IResult
         return typeof(T);
     }
 
-    public object GetValue()
+    public object? GetValue()
     {
-        return Value!;
+        if (IsSuccess)
+        {
+            return Value!;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public IError? GetError()
+    {
+        if (IsSuccess) { return null; }
+
+        return Error;
     }
 }
 
 public interface IResult
 {
+    public bool IsSuccess { get; }
+    
+    public bool IsNotFound { get; }
+
+    public bool IsFailure { get; }
+
     Type GetValueType();
-    object GetValue();
+    object? GetValue();
+    IError? GetError();
 }
