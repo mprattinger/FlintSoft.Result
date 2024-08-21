@@ -2,7 +2,7 @@
 
 namespace FlintSoft.Result;
 
-public partial class Error : IError
+public class Error : IError
 {
     public string Code { get; set; }
     public string Description { get; set; }
