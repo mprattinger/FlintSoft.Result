@@ -1,6 +1,6 @@
 ﻿namespace FlintSoft.Result;
 
-public class Result<T> : IResult
+public partial class Result<T> : IResult
 {
     public readonly T? Value;
     public readonly IError? Error;
