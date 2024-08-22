@@ -7,9 +7,9 @@ public partial class Result<T> : IResult
 
     public bool IsSuccess { get; }
 
-    public bool IsNotFound => Error is not null && Error is not Result.Error;
+    public bool IsNotFound => Error is not null && Error is NotFound;
 
-    public bool IsFailure => Error is not null && Error is Error;
+    public bool IsFailure => Error is not null && Error is not NotFound;
 
     private Result(T value)
     {
