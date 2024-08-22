@@ -1,6 +1,6 @@
 ﻿namespace FlintSoft.Result;
 
-public partial class Result<T> : IResult
+public class Result<T> : IResult
 {
     public readonly T? Value;
     public readonly IError? Error;
@@ -134,7 +134,7 @@ public partial class Result<T> : IResult
 public interface IResult
 {
     public bool IsSuccess { get; }
-    
+
     public bool IsNotFound { get; }
 
     public bool IsFailure { get; }

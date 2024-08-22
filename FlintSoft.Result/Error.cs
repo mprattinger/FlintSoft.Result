@@ -11,7 +11,8 @@ public class Error : IError
 
     public Exception? Exception { get; set; }
 
-    public Error(string code, string description, IError? innerError = null) {
+    public Error(string code, string description, IError? innerError = null)
+    {
         Code = code;
         Description = description;
         InnerError = innerError;
@@ -30,19 +31,25 @@ public class Error : IError
     }
 }
 
-public static class ErrorExtensions {
-    public static Error ToError(this IError fromError) {
-        if (fromError is Error) {
-            return new (fromError.Code == "" ? string.Empty : fromError.Code, fromError.Description);
-        } else {
+public static class ErrorExtensions
+{
+    public static Error ToError(this IError fromError)
+    {
+        if (fromError is Error)
+        {
+            return new(fromError.Code == "" ? string.Empty : fromError.Code, fromError.Description);
+        }
+        else
+        {
             throw new ArgumentException("fromError is not a valid Error Type!");
         }
     }
 
-    public static Error MergeError(this Error fromError, string description, string key = "") {
+    public static Error MergeError(this Error fromError, string description, string key = "")
+    {
         var ret = fromError;
 
-        if(!string.IsNullOrEmpty(key)) ret.Code = key;
+        if (!string.IsNullOrEmpty(key)) ret.Code = key;
 
         ret.Description = $"{description}, {ret.Description}";
 
