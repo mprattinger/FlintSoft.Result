@@ -45,7 +45,7 @@ public static class ErrorExtensions
         }
     }
 
-    public static Error MergeError(this Error fromError, string description, string key = "")
+    public static Error MergeError(this IError fromError, string description, string key = "")
     {
         var ret = fromError;
 
@@ -53,6 +53,6 @@ public static class ErrorExtensions
 
         ret.Description = $"{description}, {ret.Description}";
 
-        return ret;
+        return (ret as Error)!;
     }
 }
